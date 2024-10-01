@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin - Listado de Usuarios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-100">
+    <div th:insert="fragments/general.html :: menu"></div>
+
+    <div class="container mx-auto p-8">
+      <h1 class="text-2xl font-bold text-gray-800 mb-6">Listado de Usuarios</h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Iterar sobre usuarios -->
+        <div
+          th:each="usuario : ${usuarios}"
+          class="bg-white shadow-lg rounded-lg p-6 flex items-center space-x-6"
+        >
+          <!-- Imagen del usuario -->
+          <div>
+            <img
+              class="w-24 h-24 rounded-full"
+              th:src="@{${ '../mostrar_imagen_user?id=' + usuario.id }}"
+              alt="Imagen del usuario"
+            />
+          </div>
+
+          <!-- Informaci�n del usuario -->
+          <div class="flex-1">
+            <div class="space-y-2">
+              <p class="text-gray-800 font-semibold">
+                <span th:text="#{admin.nombre}"></span>:
+                <span th:text="${usuario.nombre}"></span>
+              </p>
+              <p class="text-gray-600">
+                <span th:text="#{admin.pass}"></span>:
+                <span th:text="${usuario.pass}"></span>
+              </p>
+              <p class="text-gray-600">
+                <span th:text="#{admin.telefono}"></span>:
+                <span th:text="${usuario.tel}"></span>
+              </p>
+              <p class="text-gray-600">
+                <span th:text="#{admin.pais}"></span>:
+                <span th:text="${usuario.pais}"></span>
+              </p>
+              <p class="text-gray-600">
+                <span th:text="#{admin.email}"></span>:
+                <span th:text="${usuario.email}"></span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Bot�n para editar -->
+          <div>
+            <a
+              th:href="@{${'editarUsuario?id='+ usuario.id}}"
+              class="text-blue-500 hover:text-blue-700 font-semibold"
+            >
+              Editar Usuario
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

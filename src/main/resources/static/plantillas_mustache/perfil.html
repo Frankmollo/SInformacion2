@@ -1,0 +1,83 @@
+<div class="container mx-auto p-6">
+	{{#.}}
+	<form class="bg-white shadow-md rounded-lg p-6 space-y-6">
+		<!-- Imagen de perfil -->
+		<div class="flex justify-center">
+			<img
+					src="mostrar_imagen_user?id={{id}}"
+					alt="Profile Image"
+					class="w-40 h-40 rounded-full object-cover shadow-md"
+			/>
+		</div>
+
+		<!-- Datos del perfil -->
+		<div id="profile-data" class="space-y-4">
+			<!-- Nombre de usuario -->
+			<div id="profile-element">
+				<label for="userName" class="block text-gray-700 font-medium">Nombre de usuario:</label>
+				<input
+						type="text"
+						name="nombre"
+						value="{{nombre}}"
+						id="userName"
+						class="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+				/>
+			</div>
+
+			<!-- Contraseña -->
+			<div id="profile-element">
+				<label for="pass" class="block text-gray-700 font-medium">Contraseña:</label>
+				<input
+						type="password"
+						name="pass"
+						value="{{pass}}"
+						id="pass"
+						class="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+				/>
+			</div>
+
+			<!-- Teléfono -->
+			<div id="profile-element">
+				<label for="tel" class="block text-gray-700 font-medium">Teléfono:</label>
+				<input
+						type="text"
+						name="tel"
+						value="{{tel}}"
+						id="tel"
+						class="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+				/>
+			</div>
+
+			<!-- País -->
+			<div id="profile-element">
+				<label for="pais" class="block text-gray-700 font-medium">País:</label>
+				<input
+						type="text"
+						name="pais"
+						value="{{pais}}"
+						id="pais"
+						class="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+				/>
+			</div>
+
+			<!-- Email -->
+			<div id="profile-element">
+				<label class="block text-gray-700 font-medium">Correo electrónico:</label>
+				<span class="text-gray-700">{{email}}</span>
+			</div>
+		</div>
+
+		<!-- Botón Actualizar -->
+		<div class="text-center">
+			<input
+					id="updateUserData"
+					type="button"
+					value="Actualizar perfil"
+					class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition cursor-pointer"
+			/>
+		</div>
+
+		<input type="hidden" value="{{id}}" id="identifier" />
+	</form>
+	{{/.}}
+</div>

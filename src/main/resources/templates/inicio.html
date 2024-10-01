@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/card.css" />
+    <link rel="stylesheet" href="css/productsList.css" />
+    <link rel="stylesheet" href="css/logIn.css" />
+    <link rel="stylesheet" href="css/register.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/inicio.css" />
+    <!--		<link rel="stylesheet" href="css/profile.css" />-->
+    <link rel="stylesheet" href="css/dickDetails.css" />
+    <link rel="stylesheet" href="css/pedidos.css" />
+    <link rel="stylesheet" href="css/pasos.css" />
+    <link rel="stylesheet" href="css/paso_final.css" />
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/imgs/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="/librerias_js/gesture-detector.js"></script>
+    <script src="/librerias_js/gesture-handler.js"></script>
+
+    <title>Ecommerce RV</title>
+  </head>
+  <body>
+    <a href="admin/obtenerDiscos">
+      <span>Acceder a la administación</span>
+    </a>
+    <header>
+      <div id="top_header">
+        <div id="logo-container">
+          <img src="imgs/vinilos.png" alt="" id="logo" />
+          <p id="main-title">Ecommerce</p>
+        </div>
+        <div>
+          <div id="logIn">
+            <div id="user-msg-div">
+              <p id="user-msg-main" class="">Iniciar Sesión</p>
+              <p id="user-msg"></p>
+            </div>
+            <img src="imgs/userIcon.png" alt="" id="userPfp" />
+          </div>
+        </div>
+      </div>
+      <div id="bottom-header">
+        <a class="tab selected" href="#" id="inicio">Inicio</a>
+        <a class="tab" href="#" id="discos">Catalogo</a>
+        <a class="tab" href="#" id="carrito">Carrito</a>
+        <a class="tab" href="#" id="mispedidos">Ver Pedidos</a>
+        <a class="tab" href="#" id="misdatos">Mis datos</a>
+        <a class="tab" href="#" id="logout">Cerrar sesión</a>
+      </div>
+    </header>
+
+    <div id="contenedor"></div>
+    <script defer src="librerias_js/jquery.js"></script>
+    <script defer src="librerias_js/mustache.js"></script>
+    <script defer src="librerias_js/js.cookie.js"></script>
+    <script defer src="javascript/constantes.js"></script>
+    <script defer src="javascript/carga_plantillas.js"></script>
+    <script defer src="javascript/funciones_menu.js"></script>
+    <script defer src="javascript/validaciones_pasos_checkout.js"></script>
+    <script defer src="javascript/pasos_checkout.js"></script>
+    <script defer src="javascript/validaciones.js"></script>
+    <script defer src="javascript/inicioCarrusel.js"></script>
+  </body>
+</html>

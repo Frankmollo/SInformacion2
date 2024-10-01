@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Listado de Pedidos</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Boxicons for Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
+  </head>
+
+  <body class="bg-gray-100">
+    <div th:insert="fragments/general.html :: menu"></div>
+
+    <div class="container mx-auto p-8 bg-white shadow-lg rounded-lg mt-10">
+      <h1 class="text-3xl font-bold text-gray-800 mb-6">
+        <i class="bx bx-list-ul text-blue-500"></i> Listado de Pedidos
+      </h1>
+
+      <!-- Input de búsqueda con ícono -->
+      <div class="mb-4">
+        <div class="relative">
+          <i class="bx bx-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Buscar pedidos..."
+            class="border border-gray-300 rounded-md pl-10 p-2 w-full"
+            onkeyup="filterTable()"
+          />
+        </div>
+      </div>
+
+      <!-- Tabla de pedidos -->
+      <div class="overflow-x-auto">
+        <table class="min-w-full table-auto text-left" id="orderTable">
+          <thead>
+            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+              <th class="px-4 py-2">ID Pedido</th>
+              <th class="px-4 py-2">Dirección</th>
+              <th class="px-4 py-2">Provincia</th>
+              <th class="px-4 py-2">Tipo de Tarjeta</th>
+              <th class="px-4 py-2">Estado del Pedido</th>
+              <th class="px-4 py-2 text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              th:each="pedido : ${pedidos}"
+              class="bg-white border-b hover:bg-gray-50 transition"
+            >
+              <td class="px-4 py-2" th:text="${pedido.id}"></td>
+              <td class="px-4 py-2" th:text="${pedido.direccion}"></td>
+              <td class="px-4 py-2" th:text="${pedido.provincia}"></td>
+              <td class="px-4 py-2" th:text="${pedido.tipoTarjeta}"></td>
+              <td class="px-4 py-2">
+                <span
+                  class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
+                  th:classappend="${pedido.estado == 'Completado'} ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'"
+                  th:text="${pedido.estado}"
+                ></span>
+              </td>
+              <td class="px-4 py-2 text-center">
+                <a
+                  th:href="@{${ 'verDetallesPedido?id=' + pedido.id }}"
+                  class="text-blue-600 hover:text-blue-800 transition flex items-center justify-center"
+                >
+                  <i class="bx bx-show mr-1"></i> Ver detalles
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Script para filtrar la tabla -->
+    <script>
+      function filterTable() {
+        const input = document.getElementById('searchInput');
+        const filter = input.value.toLowerCase();
+        const table = document.getElementById('orderTable');
+        const rows = table.getElementsByTagName('tr');
+
+        for (let i = 1; i < rows.length; i++) {
+          const cells = rows[i].getElementsByTagName('td');
+          let rowContainsSearchText = false;
+
+          for (let j = 0; j < cells.length; j++) {
+            if (cells[j].innerText.toLowerCase().includes(filter)) {
+              rowContainsSearchText = true;
+              break;
+            }
+          }
+
+          if (rowContainsSearchText) {
+            rows[i].style.display = '';
+          } else {
+            rows[i].style.display = 'none';
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

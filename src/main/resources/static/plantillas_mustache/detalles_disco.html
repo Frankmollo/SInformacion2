@@ -1,0 +1,69 @@
+<div id="details-main" class="container mx-auto p-6 text-white">
+  <!-- Mensaje de bienvenida -->
+  <div id="welcome-message" class="text-center mb-4">
+    <h1 class="text-4xl font-bold text-white">¡Bienvenido al probador virtual!</h1>
+    <p class="text-lg text-white">Por favor, active su cámara para comenzar.</p>
+  </div>
+
+  <!-- Detalles del encabezado (Imagen, Nombre, Artista) -->
+  <div id="details-header" class="flex flex-col lg:flex-row items-center space-x-0 lg:space-x-6 mb-6">
+    <img src="mostrar_imagen?id={{id}}" alt="Album Cover" class="w-full lg:w-48 h-auto lg:h-48 object-cover rounded-lg shadow-md mb-4 lg:mb-0" />
+
+    <model-viewer id="miModelViewer" alt="ropa" src="{{discografica}}" ar
+      ar-modes="webxr scene-viewer quick-look" seamless-poster shadow-intensity="1" camera-controls
+      ar-placement="floor" progress-bar class="w-full h-64 lg:w-full lg:h-96 rounded-lg mb-4">
+    </model-viewer>
+
+    <a-scene arjs embedded renderer="logarithmicDepthBuffer: true;" vr-mode-ui="enabled: false" gesture-detector
+      id="scene" class="w-full h-64 lg:w-full lg:h-96 mb-4">
+      <a-assets>
+        <a-asset-item id="bowser" src="{{discografica}}"></a-asset-item>
+      </a-assets>
+      <a-marker preset="hiro" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;"
+        id="markerA">
+        <a-entity id="bowser-model" gltf-model="#bowser" position="0 0 0" scale="0.05 0.05 0.05" class="clickable"
+          gesture-handler></a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <div class="w-full lg:w-auto">
+      <h1 class="text-3xl font-bold text-white">{{nombre}}</h1>
+      <h2 class="text-xl text-white">{{artista}}</h2>
+    </div>
+  </div>
+
+  <!-- Cuerpo de detalles del disco -->
+  <div id="details-body" class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+    <!-- Código -->
+    <div>
+      <p class="text-lg font-semibold text-white">Código:</p>
+      <p class="text-white">{{ano}}</p>
+    </div>
+
+    <!-- Talla -->
+    <div>
+      <p class="text-lg font-semibold text-white">Talla:</p>
+      <p class="text-white">{{discografica}}</p>
+    </div>
+
+    <!-- Marca -->
+    <div>
+      <p class="text-lg font-semibold text-white">Marca:</p>
+      <p class="text-white">{{genero}}</p>
+    </div>
+
+    <!-- Precio -->
+    <div>
+      <p class="text-lg font-semibold text-white">Precio:</p>
+      <p id="details-price" class="text-2xl font-bold text-white">{{precio}} Bs</p>
+    </div>
+  </div>
+
+  <!-- Botón para añadir al carrito -->
+  <div class="text-center">
+    <input type="button"
+      class="details-comprar bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition cursor-pointer"
+      id-producto="{{id}}" value="Añadir al carrito" />
+  </div>
+</div>

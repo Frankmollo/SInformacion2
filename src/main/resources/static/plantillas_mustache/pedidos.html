@@ -1,0 +1,51 @@
+<div id="order" class="container mx-auto p-6">
+	<!-- Encabezado de la tabla -->
+	<div id="order_top" class="grid grid-cols-5 gap-4 font-bold text-gray-700 bg-gray-100 p-4 rounded-lg mb-4">
+		<div>
+			<p>Id de pedido</p>
+		</div>
+		<div>
+			<p>Dirección</p>
+		</div>
+		<div>
+			<p>Provincia</p>
+		</div>
+		<div>
+			<p>Tipo de tarjeta</p>
+		</div>
+		<div>
+			<p>Estado</p>
+		</div>
+	</div>
+
+	<!-- Cuerpo de la tabla (Pedidos) -->
+	{{#.}}
+	<div class="order-object grid grid-cols-5 gap-4 p-4 rounded-lg mb-2 bg-white hover:bg-gray-50 transition duration-300">
+		<div>
+			<p>{{id}}</p>
+		</div>
+		<div>
+			<p>{{direccion}}</p>
+		</div>
+		<div>
+			<p>{{provincia}}</p>
+		</div>
+		<div>
+			<p>{{tipo_tarjeta}}</p>
+		</div>
+		<div>
+			<p>{{estado}}</p>
+		</div>
+	</div>
+	{{/.}}
+</div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".order-object").forEach((e, i) => {
+        if (i % 2 === 0) {
+          e.classList.add("bg-gray-200");
+        }
+      });
+    });
+</script>

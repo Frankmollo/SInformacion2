@@ -1,0 +1,58 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+	<form id="form_login" class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
+		<p class="text-2xl font-bold text-gray-800 mb-6 text-center">Iniciar Sesión</p>
+
+		<!-- Inputs de correo electrónico y contraseña -->
+		<div id="form_login_inputs" class="space-y-4">
+			<!-- Correo Electrónico -->
+			<div>
+				<label for="email" class="block text-gray-700 font-medium">Correo Electrónico:</label>
+				<input
+						type="text"
+						name="email"
+						id="email"
+						class="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+						placeholder="Introduce tu correo electrónico"
+				/>
+			</div>
+
+			<!-- Contraseña -->
+			<div>
+				<label for="pass" class="block text-gray-700 font-medium">Contraseña:</label>
+				<input
+						type="password"
+						name="pass"
+						id="pass"
+						class="w-full border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+						placeholder="Introduce tu contraseña"
+				/>
+			</div>
+
+			<!-- Recordar datos -->
+			<div id="form-checkbox" class="flex items-center">
+				<input
+						type="checkbox"
+						checked="checked"
+						id="recordar_datos"
+						name="recordar_datos"
+						class="mr-2 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+				/>
+				<label for="recordar_datos" class="text-gray-600">Recordar mis datos</label>
+			</div>
+		</div>
+
+		<!-- Redirección a registro -->
+		<div id="form-redirect" class="mt-6 text-center">
+			<span class="text-gray-600">¿No tienes cuenta?</span>
+			<a href="#" id="registrarme" class="text-blue-500 hover:underline ml-1">Crear cuenta</a>
+		</div>
+
+		<!-- Botón de LogIn -->
+		<input
+				id="logInButton"
+				type="submit"
+				value="LogIn"
+				class="w-full bg-blue-500 text-white py-2 rounded-lg mt-6 hover:bg-blue-600 transition cursor-pointer"
+		/>
+	</form>
+</div>

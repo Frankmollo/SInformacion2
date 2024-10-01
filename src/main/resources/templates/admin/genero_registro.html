@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Registrar Nueva Marca</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Boxicons for Icons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-gray-100">
+    <!-- Menu -->
+    <div th:insert="fragments/general.html :: menu"></div>
+
+    <!-- Main Container -->
+    <div class="container mx-auto p-8 bg-white shadow-lg rounded-lg mt-10 max-w-lg">
+      <!-- Title -->
+      <h1 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+        <i class="bx bx-plus-circle mr-2 text-blue-500"></i> Registrar Nueva Marca
+      </h1>
+
+      <!-- Form -->
+      <form
+        action="#"
+        th:action="guardarGenero"
+        th:object="${nuevoGenero}"
+        method="post"
+        enctype="multipart/form-data"
+        class="space-y-6"
+      >
+        <!-- Nombre del Marca -->
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">
+            <i class="bx bx-font text-xl mr-1 text-blue-500"></i> Nombre de la Marca
+          </label>
+          <input
+            type="text"
+            th:field="*{nombre}"
+            class="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ingrese el nombre de la Marca"
+          />
+          <span
+            class="text-red-600 text-sm"
+            th:if="${#fields.hasErrors('nombre')}"
+            th:errors="*{nombre}"
+          ></span>
+        </div>
+
+        <!-- Botón de Registro -->
+        <div class="flex justify-end">
+          <button
+            type="submit"
+            class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-lg hover:shadow-lg flex items-center transition transform hover:scale-105"
+          >
+            <i class="bx bx-save mr-2"></i> Registrar Nueva Marca
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

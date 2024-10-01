@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1" />
+	<title>Menú de Administración</title>
+	<link rel="stylesheet" href="../css/admin/header.css">
+	<style>
+		body {
+            background-color: #f4f4f4; /* Fondo gris claro */
+            color: #333; /* Color del texto */
+            font-family: 'Arial', sans-serif; /* Tipografía */
+            margin: 0;
+            padding: 20px; /* Espaciado alrededor */
+        }
+
+        #menu-topContainer {
+            display: flex; /* Usar flexbox para alinear elementos */
+            justify-content: space-between; /* Espacio entre título y idioma */
+            align-items: center; /* Centrar verticalmente */
+            background-color: #fff; /* Fondo blanco */
+            padding: 15px; /* Espaciado interno */
+            border-radius: 5px; /* Bordes redondeados */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+            margin-bottom: 20px; /* Espacio debajo */
+        }
+
+        #menu-title {
+            font-size: 24px; /* Tamaño de fuente del título */
+            font-weight: bold; /* Negrita */
+        }
+
+        #menu-language {
+            font-size: 18px; /* Tamaño de fuente para el idioma */
+        }
+
+        #menu-links {
+            list-style-type: none; /* Eliminar puntos de lista */
+            padding: 0; /* Eliminar padding */
+            margin: 0; /* Eliminar margen */
+            display: flex; /* Usar flexbox para alinear los botones */
+            flex-direction: column; /* Alinear en columna */
+            align-items: flex-start; /* Alinear a la izquierda */
+        }
+
+        #menu-links li {
+            width: 100%; /* Ancho completo */
+            margin: 5px 0; /* Espaciado entre botones */
+        }
+
+        #menu-links a {
+            background-color: #dc3545; /* Fondo rojo */
+            color: white; /* Texto blanco */
+            padding: 10px; /* Espaciado interno */
+            border-radius: 5px; /* Bordes redondeados */
+            text-decoration: none; /* Sin subrayado */
+            transition: background-color 0.3s; /* Efecto de transición */
+            display: block; /* Hace que el enlace ocupe todo el ancho del elemento padre */
+            text-align: center; /* Centrar texto */
+        }
+
+        #menu-links a:hover {
+            background-color: #c82333; /* Color más oscuro al pasar el ratón */
+        }
+	</style>
+</head>
+<body>
+<div th:fragment="menu">
+	<div>
+		<a href="../" th:text="#{admin.volverCliente}"></a>
+	</div>
+	<div>
+		<div id="menu-topContainer">
+			<div id="menu-title">
+				<div th:text="#{admin.tituloPrincipal}"></div>
+			</div>
+			<div id="menu-language">
+				<span th:text="#{admin.cambiaridoma}"></span>
+				<a href="?idioma=es">🇪🇸</a>
+				<a href="?idioma=en">🇬🇧</a>
+			</div>
+		</div>
+		<ul id="menu-links"> <!-- Cambiado a <ul> -->
+			<li>
+				<a href="obtenerDiscos" th:text="#{admin.gestionarDiscos}"></a>
+			</li>
+			<li>
+				<a href="obtenerGeneros" th:text="#{admin.gestionarGeneros}"></a>
+			</li>
+			<li>
+				<a href="obtenerUsuarios" th:text="#{admin.gestionarUsuarios}"></a>
+			</li>
+			<li>
+				<a href="obtenerPedidos" th:text="#{admin.gestionarPedidos}"></a>
+			</li>
+			<li>
+				<a href="../logoutAdmin" th:text="#{admin.logout}"></a>
+			</li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

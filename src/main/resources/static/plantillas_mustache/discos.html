@@ -1,0 +1,63 @@
+<!-- Buscador y filtros -->
+<form id="search_form" class="mb-6">
+	<div class="flex items-center space-x-4 mb-4">
+		<input type="text" id="nombre_buscador" placeholder="Buscar Productos..." class="border border-gray-300 p-2 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+		<details class="bg-gray-100 p-2 rounded-lg shadow-md w-60">
+			<summary class="cursor-pointer font-semibold text-gray-700">Filtros de búsqueda</summary>
+			<div id="filters-container" class="mt-2 space-y-4">
+				<!-- Artista -->
+				<div>
+					<label for="artista_buscador" class="block text-gray-700">Color</label>
+					<select name="artista" id="artistas" class="w-full p-2 border rounded-lg">
+						<option value="">Todos</option>
+						{{#artistas}}
+						<option value="{{.}}">{{.}}</option>
+						{{/artistas}}
+					</select>
+				</div>
+				<!-- Precio -->
+				<div>
+					<label for="max-price" class="block text-gray-700">Precio máximo</label>
+					<div id="filters-price-container" class="flex items-center">
+						<input type="range" min="1" max="250" value="250" id="max-price" class="w-full" />
+						<p class="ml-4 text-gray-600"><span id="max-price-value">250</span> Bs</p>
+					</div>
+				</div>
+			</div>
+		</details>
+	</div>
+</form>
+
+<!-- Paginación -->
+<div class="flex justify-between items-center mb-6">
+	<a id="enlace_anterior" href="#" class="text-blue-500 hover:underline">Anterior</a>
+	<span id="total_resultados" class="text-gray-700"></span>
+	<a id="enlace_siguiente" href="#" class="text-blue-500 hover:underline">Siguiente</a>
+</div>
+
+<!-- Listado de discos (Cards) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+	{{#discos}}
+	<div class="card bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition duration-300" id-producto="{{id}}">
+		<img src="mostrar_imagen?id={{id}}" alt="albumCover" class="w-full h-48 object-cover" />
+		<div class="p-4">
+			<h2 class="text-lg font-bold text-gray-800">{{nombre}}</h2>
+			<div class="flex items-center space-x-2 text-gray-600 text-sm mt-2">
+				<p>{{artista}}</p>
+				<span>•</span>
+				<p>{{nombre_genero}}</p>
+			</div>
+			<div class="mt-4 flex justify-between items-center">
+				<p class="text-xl font-semibold text-green-500">{{precio}} Bs</p>
+				<button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition" id-producto="{{id}}">Añadir al carrito</button>
+			</div>
+		</div>
+	</div>
+	{{/discos}}
+	{{^discos}}
+	<div class="col-span-full text-center">
+		<h2 class="text-xl font-semibold text-gray-600">No hay producto que cumplan los filtros de búsqueda</h2>
+	</div>
+	{{/discos}}
+</div>

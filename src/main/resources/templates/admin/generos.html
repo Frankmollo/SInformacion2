@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Listado de Marcas</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Boxicons for Icons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-gray-100">
+    <!-- Menu -->
+    <div th:insert="fragments/general.html :: menu"></div>
+
+    <!-- Main Container -->
+    <div class="container mx-auto p-8">
+      <!-- Header and Register Button -->
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold text-gray-800">Listado de Marcas</h1>
+        <a
+          href="registrarGenero"
+          class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-5 py-2 rounded-lg hover:shadow-lg flex items-center transition transform hover:scale-105"
+        >
+          <i class="bx bx-plus mr-2"></i> Registrar Nueva Marca
+        </a>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="relative mb-6">
+        <input
+          type="text"
+          id="genreSearch"
+          placeholder="Buscar Marcas..."
+          class="border border-gray-300 p-3 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <i class="bx bx-search absolute top-3 right-3 text-gray-500"></i>
+      </div>
+
+      <!-- Table of Brands -->
+      <div class="overflow-x-auto">
+        <table class="min-w-full table-auto bg-white shadow-md rounded-lg">
+          <thead>
+            <tr class="bg-gray-300 text-gray-600 uppercase text-sm leading-normal">
+              <th class="py-3 px-6 text-left">ID</th>
+              <th class="py-3 px-6 text-left">Nombre</th>
+              <th class="py-3 px-6 text-center">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="genreTable">
+            <!-- Iterar sobre marcas -->
+            <tr
+              th:each="genero : ${generos}"
+              class="border-b border-gray-200 hover:bg-gray-100 transition"
+            >
+              <td class="py-3 px-6 text-left" th:text="${genero.id}"></td>
+              <td class="py-3 px-6 text-left" th:text="${genero.nombre}"></td>
+              <td class="py-3 px-6 text-center">
+                <a
+                  th:href="@{${'editarGenero?id='+ genero.id}}"
+                  class="text-blue-500 hover:text-blue-600 transition"
+                >
+                  <i class="bx bx-edit"></i> Editar
+                </a>
+                <a
+                  th:href="@{${'borrarGenero?id='+ genero.id}}"
+                  class="text-red-500 hover:text-red-600 ml-4 transition"
+                >
+                  <i class="bx bx-trash"></i> Borrar
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      // Buscador de marcas
+      document
+        .getElementById("genreSearch")
+        .addEventListener("input", function () {
+          let searchTerm = this.value.toLowerCase();
+          let rows = document.querySelectorAll("#genreTable tr");
+
+          rows.forEach((row) => {
+            let genreName = row
+              .querySelector("td:nth-child(2)")
+              .textContent.toLowerCase();
+            if (genreName.includes(searchTerm)) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
+        });
+    </script>
+  </body>
+</html>

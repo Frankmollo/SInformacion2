@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Admin - Editar Marca</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<div th:insert="fragments/general.html :: menu"></div>
+
+<div class="container mx-auto p-8 bg-white shadow-lg rounded-lg mt-10">
+	<h1 class="text-2xl font-bold text-gray-800 mb-6">Editar Marca</h1>
+
+	<form
+			action="#"
+			th:action="guardarCambiosGenero"
+			th:object="${generoEditar}"
+			method="post"
+			enctype="multipart/form-data"
+			class="space-y-6"
+	>
+		<!-- Nombre -->
+		<div>
+			<label class="block text-gray-700 font-medium mb-2">Nombre del Marca</label>
+			<input
+					type="text"
+					th:field="*{nombre}"
+					class="border border-gray-300 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+					placeholder="Ingrese el nombre del Marca"
+			/>
+		</div>
+
+		<input type="hidden" th:field="*{id}" />
+
+		<!-- Submit -->
+		<div>
+			<input
+					type="submit"
+					value="Guardar cambios del Marca"
+					class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition cursor-pointer"
+			/>
+		</div>
+	</form>
+</div>
+
+</body>
+
+</html>

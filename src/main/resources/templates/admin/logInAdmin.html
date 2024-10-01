@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login Admin - Página</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+<div class="bg-white p-8 shadow-lg rounded-lg w-full max-w-sm">
+	<h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Iniciar Sesión de Administración</h1>
+	<p class="text-gray-600 mb-4 text-center">Para administrar la página, por favor ingrese su contraseña</p>
+
+	<form action="admin/obtenerDiscos" method="post" class="space-y-6">
+		<!-- Campo de contraseña -->
+		<div>
+			<label for="pass-login-admin" class="block text-gray-700 font-medium mb-2">Contraseña</label>
+			<input
+					type="password"
+					name="pass-login-admin"
+					id="pass-login-admin"
+					class="border border-gray-300 p-2 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+					placeholder="Ingrese su contraseña"
+			/>
+		</div>
+
+		<!-- Botón de aceptar -->
+		<div>
+			<input
+					type="submit"
+					value="Aceptar"
+					class="bg-blue-500 text-white px-6 py-2 w-full rounded-lg hover:bg-blue-600 transition cursor-pointer"
+			/>
+		</div>
+	</form>
+</div>
+
+</body>
+
+</html>
